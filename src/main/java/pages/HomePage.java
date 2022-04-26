@@ -74,7 +74,8 @@ public class HomePage extends BasePage{
      */
     public LoginPage clickLoginButton(){
         clickDropdownMenuButton();
-        getWait().until(ExpectedConditions.elementToBeClickable(dropdownMainMenuLoginButton));
+        waitElementToBeClickable(dropdownMainMenuLoginButton);
+        // getWait().until(ExpectedConditions.elementToBeClickable(dropdownMainMenuLoginButton));
         dropdownMainMenuLoginButton.click();
         switchToLoginFrame(loginFrame);
 

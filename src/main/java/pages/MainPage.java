@@ -31,15 +31,26 @@ public class MainPage extends BasePage {
     /**
      * Click main menu to display login container
      */
-    public void clickDropdownMenu(){
-        getWait().until(ExpectedConditions.elementToBeClickable(dropdownMainMenuButton));
+    public void clickDropdownMenuButton(){
+        waitElementToBeClickable(dropdownMainMenuButton);
         dropdownMainMenuButton.click();
-        getWait().until(ExpectedConditions.visibilityOf(dropdownMainMenuContainer));
+        waitElementVisibility(dropdownMainMenuContainer);
     }
 
-    public void clickProfileButton(){
-        clickDropdownMenu();
-
+    /**
+     * Switch to iframe profile interface
+     * @param profileFrame
+     */
+    public void switchToProfileFrame(WebElement profileFrame){
+        getDriver().switchTo().frame(profileFrame);
     }
 
+    public ProfilePage clickProfileButton(){
+        clickDropdownMenuButton();
+        waitElementToBeClickable(profileButton);
+        profileButton.click();
+        switchToProfileFrame(profileFrame);
+
+        return new ProfilePage(getDriver());
+    }
 }
