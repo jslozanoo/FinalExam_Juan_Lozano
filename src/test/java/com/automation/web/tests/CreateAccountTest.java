@@ -3,9 +3,7 @@ package com.automation.web.tests;
 import com.automation.web.data.User;
 import driver.Driver;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SignupPage;
+import pages.*;
 
 public class CreateAccountTest {
     @Test
@@ -30,11 +28,29 @@ public class CreateAccountTest {
         HomePage homePage = new HomePage(driver.getDriver());
         LoginPage loginPage = homePage.clickLoginButton(); // I'm in the iframe
         SignupPage signupPage = loginPage.clickSignupButton();
-        User user = new User("sofia", "acosta", "sofiacosta@gmail.com",
+        User user = new User("sofia", "acosta", "sofiaacosta@gmail.com",
                 "sofi2008");
         signupPage.setFirstName(user.getFirstName() , user.getLastName(), user.getEmail(),
                 user.getPassword());
         signupPage.clickSignUpButton();
         driver.getDriver().close();
+    }
+    // With the assumption that we are in the main page (logged)
+    @Test
+    public void testDeleteAccount() throws InterruptedException {
+        Driver driver = new Driver("chrome");
+        driver.getDriver().manage().window().maximize();
+        driver.getDriver().get("https://www.espnqa.com/?src=com&_adblock=true&espn=cloud");
+        HomePage homePage = new HomePage(driver.getDriver());
+        LoginPage loginPage = homePage.clickLoginButton();
+        loginPage.setEmail("test-globant2@gmail.com");
+        loginPage.setPassword("mirta2008");
+        MainPage mainpage = loginPage.clickLoginButton();
+        ProfilePage profilePage = mainpage.clickProfileButton();
+        profilePage.clickToDeleteAccountLink();
+        Thread.sleep(3000); //Left to confirm account delete
+        profilePage.clickConfirmDeleteAccount();
+        Thread.sleep(4000);
+        driver.getDriver().quit();
     }
 }
