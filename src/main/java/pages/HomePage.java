@@ -37,7 +37,7 @@ public class HomePage extends BasePage{
     /**
      * Click main menu to display login container
      */
-    public void clickDropdownMenu(){
+    public void clickDropdownMenuButton(){
         waitElementToBeClickable(dropdownMainMenuButton);
         dropdownMainMenuButton.click();
         waitElementVisibility(dropdownMainMenuContainer);
@@ -48,7 +48,7 @@ public class HomePage extends BasePage{
      * @return
      */
     public String getMainContainerTitle(){
-        clickDropdownMenu();
+        clickDropdownMenuButton();
         return dropdownMainMenuTitle.getText();
     }
 
@@ -73,7 +73,7 @@ public class HomePage extends BasePage{
      * @return LoginPage instance
      */
     public LoginPage clickLoginButton(){
-        clickDropdownMenu();
+        clickDropdownMenuButton();
         getWait().until(ExpectedConditions.elementToBeClickable(dropdownMainMenuLoginButton));
         dropdownMainMenuLoginButton.click();
         switchToLoginFrame(loginFrame);
