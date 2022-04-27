@@ -31,11 +31,11 @@ public class BaseTest {
     }
 
     /**
-     * Create an account before each class and logout
+     * Create an account before each test method and logout
      */
-    @BeforeClass
+    @BeforeMethod
     public void beforeClass() {
-        LoginPage loginPage = homePage.clickLoginButton();
+        LoginPage loginPage = this.homePage.clickLoginButton();
         SignupPage signupPage = loginPage.clickSignupButton();
         String email = generateRandomEmail();
         this.email = email;
@@ -50,6 +50,17 @@ public class BaseTest {
         MainPage mainPage = signupPage.clickSignUpButton();
         mainPage.clickLogoutButton();
     }
+
+    /**
+     * After each test method go to home page
+     * @param url
+     */
+    @Parameters({"url"})
+    @AfterMethod
+    public void afterMethod(String url){
+        driver.getDriver().get(url);
+    }
+
     private String generateRandomString(){
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         StringBuilder sb = new StringBuilder();

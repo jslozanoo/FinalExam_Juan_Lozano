@@ -15,11 +15,48 @@ public class ProfilePage extends BasePage{
     private WebElement deleteAccountLink;
     @FindBy(css = "section.main button:first-of-type")
     private WebElement confirmDeleteAccountButton;
+    @FindBy(css = "section.workflow h2")
+    private WebElement interfaceTitle;
+    @FindBy(css = "section .section-password h3")
+    private WebElement changePasswordTitle;
+
+    @FindBy(css = "div.block p")
+    private WebElement confirmDeleteAccountParagraph;
 
     public ProfilePage(WebDriver driver){
         super(driver);
     }
 
+    /**
+     * Get Main title (not the page title) of the interface displayed
+     * @return
+     */
+    public String getPageMainTitle(){
+        waitElementVisibility(interfaceTitle);
+        return interfaceTitle.getText();
+    }
+
+    /**
+     * Get change password title in the interface
+     * @return
+     */
+    public String getChangePasswordTitle(){
+        waitElementVisibility(changePasswordTitle);
+        return changePasswordTitle.getText();
+    }
+
+    /**
+     * Get text in the confirm delete button
+     * @return
+     */
+    public String getConfirmDeleteParagraph(){
+        waitElementVisibility(confirmDeleteAccountParagraph);
+        return confirmDeleteAccountParagraph.getText();
+    }
+
+    /**
+     * Click delete account link
+     */
     public void clickToDeleteAccountLink(){
         try{
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
@@ -35,9 +72,11 @@ public class ProfilePage extends BasePage{
         }
     }
 
+    /**
+     * Click confirm delete account button
+     */
     public void clickConfirmDeleteAccount(){
         waitElementToBeClickable(confirmDeleteAccountButton);
         confirmDeleteAccountButton.click();
-        // After delete appears an alert
     }
 }

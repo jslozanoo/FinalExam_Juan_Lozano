@@ -6,8 +6,11 @@
     <parameter name="url" value="https://www.espnqa.com/?src=com&amp;_adblock=true&amp;espn=cloud"/>
     <test name="example run">
         <classes>
-            <class name="com.automation.web.tests.LoginTest"/>
-            <class name="com.automation.web.tests.LogoutTest"></class>
+            <class name="com.automation.web.tests.AccountTest">
+                <methods>
+                    <include name="testDeleteAccount"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
