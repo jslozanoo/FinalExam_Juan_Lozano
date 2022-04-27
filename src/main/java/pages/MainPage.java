@@ -1,9 +1,16 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.sql.Time;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Home Page with user logged
@@ -48,6 +55,8 @@ public class MainPage extends BasePage {
         clickDropdownMenuButton();
         waitElementToBeClickable(logoutButton);
         logoutButton.click();
+        getWait().until(ExpectedConditions.invisibilityOfElementLocated
+                (By.cssSelector(".global-user[style] div ul:first-child li:first-child")));
         return new HomePage(getDriver());
     }
 

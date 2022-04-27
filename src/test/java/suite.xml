@@ -1,12 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="example test suite" verbose="1">
-    <listeners>
-        <listener class-name="com.automation.web.listeners.Listeners"/>
-    </listeners>
-    
+
     <parameter name="browser" value="chrome"/>
-    <parameter name="url" value="chrome"/>
+    <parameter name="url" value="https://www.espnqa.com/?src=com&amp;_adblock=true&amp;espn=cloud"/>
     <test name="example run">
         <classes>
             <class name="com.automation.web.tests.LoginTest"/>
