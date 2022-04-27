@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Page for interface displayed after click login button on main menu. It's an iframe
@@ -26,6 +27,11 @@ public class LoginPage extends BasePage{
 
     public LoginPage(WebDriver driver){
         super(driver);
+    }
+
+    public String getValidationLinkText(){
+        getWait().until(ExpectedConditions.visibilityOf(needHelpText));
+        return needHelpText.getText();
     }
 
     /**

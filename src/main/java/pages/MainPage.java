@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +33,24 @@ public class MainPage extends BasePage {
     }
 
     /**
+     * True if profile button is displayed (only true if the user is logged)
+     * @return
+     */
+    public boolean isProfileButtonVisible(){
+        clickDropdownMenuButton();
+        return profileButton.isDisplayed();
+    }
+
+    /**
+     * True if logout button is displayed
+     * @return
+     */
+    public boolean isLogoutButtonDisplayed(){
+        clickDropdownMenuButton();
+        return logoutButton.isDisplayed();
+    }
+
+    /**
      * Click main menu to display login container
      */
     public void clickDropdownMenuButton(){
@@ -48,6 +67,8 @@ public class MainPage extends BasePage {
         clickDropdownMenuButton();
         waitElementToBeClickable(logoutButton);
         logoutButton.click();
+        getWait().until(ExpectedConditions.invisibilityOfElementLocated
+                (By.cssSelector(".global-user[style] div ul:first-child li:first-child")));
         return new HomePage(getDriver());
     }
 
