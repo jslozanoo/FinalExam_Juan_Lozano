@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MainPage;
-import pages.ProfilePage;
 
 public class LoginTest extends BaseTest{
     @Test
@@ -28,7 +27,7 @@ public class LoginTest extends BaseTest{
         loginPage.setEmail(email);
         loginPage.setPassword(password);
         MainPage mainPage = loginPage.clickLoginButton();
-        Assert.assertTrue(mainPage.isLoginButtonDisplayed());
+        Assert.assertTrue(mainPage.isLogoutButtonDisplayed());
         HomePage homePageReturned = mainPage.clickLogoutButton();
         Assert.assertEquals(homePageReturned.getMainContainerTitle(), "Welcome!",
                 "You are not in home page");
