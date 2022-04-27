@@ -50,24 +50,6 @@ public class BaseTest {
         MainPage mainPage = signupPage.clickSignUpButton();
         mainPage.clickLogoutButton();
     }
-
-    /**
-     * Delete the account created
-     */
-    @AfterClass
-    public void afterClass(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.setEmail(email);
-        loginPage.setPassword(password);
-        MainPage mainpage = loginPage.clickLoginButton();
-
-        ProfilePage profilePage = mainpage.clickProfileButton();
-        profilePage.clickToDeleteAccountLink();
-        profilePage.clickConfirmDeleteAccount();
-    }
-
-
-
     private String generateRandomString(){
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         StringBuilder sb = new StringBuilder();

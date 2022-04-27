@@ -7,6 +7,7 @@
     <test name="example run">
         <classes>
             <class name="com.automation.web.tests.LoginTest"/>
+            <class name="com.automation.web.tests.LogoutTest"></class>
         </classes>
     </test>
 </suite>

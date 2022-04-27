@@ -8,7 +8,7 @@ import pages.MainPage;
 
 public class LoginTest extends BaseTest{
     @Test
-    public void testLogin() throws InterruptedException {
+    public void testLogin(){
         Assert.assertEquals(homePage.getMainContainerTitle(), "Welcome!",
                 "You are not in home page");
         LoginPage loginPage = homePage.clickLoginButton();
@@ -19,17 +19,5 @@ public class LoginTest extends BaseTest{
         MainPage mainPage = loginPage.clickLoginButton();
         Assert.assertTrue(mainPage.isProfileButtonVisible());
         mainPage.clickLogoutButton();
-        Thread.sleep(7000); // delete this
-    }
-    @Test
-    public void testLogout(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.setEmail(email);
-        loginPage.setPassword(password);
-        MainPage mainPage = loginPage.clickLoginButton();
-        Assert.assertTrue(mainPage.isLogoutButtonDisplayed());
-        HomePage homePageReturned = mainPage.clickLogoutButton();
-        Assert.assertEquals(homePageReturned.getMainContainerTitle(), "Welcome!",
-                "You are not in home page");
     }
 }
