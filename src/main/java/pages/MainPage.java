@@ -24,6 +24,9 @@ public class MainPage extends BasePage {
     @FindBy(css = ".global-user[style] li:nth-child(5) a")
     private WebElement profileButton;
 
+    @FindBy(css = ".global-user[style] li:nth-child(9) a")
+    private WebElement logoutButton;
+
     public MainPage(WebDriver driver){
         super(driver);
     }
@@ -35,6 +38,17 @@ public class MainPage extends BasePage {
         waitElementToBeClickable(dropdownMainMenuButton);
         dropdownMainMenuButton.click();
         waitElementVisibility(dropdownMainMenuContainer);
+    }
+
+    /**
+     * logout and return main page
+     * @return
+     */
+    public HomePage clickLogoutButton(){
+        clickDropdownMenuButton();
+        waitElementToBeClickable(logoutButton);
+        logoutButton.click();
+        return new HomePage(getDriver());
     }
 
     /**

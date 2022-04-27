@@ -30,7 +30,7 @@ public class CreateAccountTest {
         SignupPage signupPage = loginPage.clickSignupButton();
         User user = new User("sofia", "acosta", "sofiaacosta@gmail.com",
                 "sofi2008");
-        signupPage.setFirstName(user.getFirstName() , user.getLastName(), user.getEmail(),
+        signupPage.setFormFields(user.getFirstName() , user.getLastName(), user.getEmail(),
                 user.getPassword());
         signupPage.clickSignUpButton();
         driver.getDriver().close();
@@ -52,5 +52,20 @@ public class CreateAccountTest {
         profilePage.clickConfirmDeleteAccount();
         Thread.sleep(4000);
         driver.getDriver().quit();
+    }
+
+    @Test
+    public void testLogout() throws InterruptedException {
+        Driver driver = new Driver("chrome");
+        driver.getDriver().manage().window().maximize();
+        driver.getDriver().get("https://www.espnqa.com/?src=com&_adblock=true&espn=cloud");
+        HomePage homePage = new HomePage(driver.getDriver());
+        LoginPage loginPage = homePage.clickLoginButton();
+        loginPage.setEmail("test-globant@gmail.com");
+        loginPage.setPassword("142308Jslp");
+        MainPage mainPage = loginPage.clickLoginButton();
+        mainPage.clickLogoutButton();
+        Thread.sleep(5000);
+        driver.getDriver().close();
     }
 }

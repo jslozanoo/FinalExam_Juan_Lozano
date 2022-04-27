@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 
 /**
  * home page
@@ -75,7 +73,6 @@ public class HomePage extends BasePage{
     public LoginPage clickLoginButton(){
         clickDropdownMenuButton();
         waitElementToBeClickable(dropdownMainMenuLoginButton);
-        // getWait().until(ExpectedConditions.elementToBeClickable(dropdownMainMenuLoginButton));
         dropdownMainMenuLoginButton.click();
         switchToLoginFrame(loginFrame);
 

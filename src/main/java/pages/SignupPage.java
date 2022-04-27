@@ -38,7 +38,7 @@ public class SignupPage extends BasePage {
      * @param email
      * @param password
      */
-    public void setFirstName(String firstName, String lastName, String email, String password){
+    public void setFormFields(String firstName, String lastName, String email, String password){
         waitElementVisibility(firstNameField);
         firstNameField.sendKeys(firstName);
         waitElementVisibility(lastNameField);

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Page for interface displayed after click login button on main menu. It's in an iframe
+ * Page for interface displayed after click login button on main menu. It's an iframe
  */
 public class LoginPage extends BasePage{
 
