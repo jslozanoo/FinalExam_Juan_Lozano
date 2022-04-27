@@ -17,7 +17,6 @@ public class AccountTest extends BaseTest{
                 "You are not in the login interface");
         loginPage.setEmail(email);
         loginPage.setPassword(password);
-        log.info("email: " + email + ", password: " + password);
         MainPage mainPage = loginPage.clickLoginButton();
         Assert.assertTrue(mainPage.isProfileButtonVisible());
         mainPage.clickLogoutButton();
@@ -28,7 +27,6 @@ public class AccountTest extends BaseTest{
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.setEmail(email);
         loginPage.setPassword(password);
-        log.info("email: " + email + ", password: " + password);
         MainPage mainPage = loginPage.clickLoginButton();
         Assert.assertTrue(mainPage.isLogoutButtonDisplayed());
         HomePage homePageReturned = mainPage.clickLogoutButton();
@@ -52,9 +50,6 @@ public class AccountTest extends BaseTest{
                 "You are not in the profile page");
 
         profilePage.clickToDeleteAccountLink();
-
-        Assert.assertTrue(profilePage.getConfirmDeleteParagraph().contains("By deleting your account"),
-                "You are not in the confirm delete account page");
         profilePage.clickConfirmDeleteAccount();
     }
 }

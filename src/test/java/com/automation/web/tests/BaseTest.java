@@ -41,8 +41,6 @@ public class BaseTest {
         this.email = email;
         String password = generateRandomString();
         this.password = password;
-        log.info(email);
-        log.info(password);
         User user = new User("juan", "lozano", email,
                 password);
         signupPage.setFormFields(user.getFirstName() , user.getLastName(), user.getEmail(),
