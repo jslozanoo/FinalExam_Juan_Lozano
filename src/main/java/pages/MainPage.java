@@ -38,9 +38,22 @@ public class MainPage extends BasePage {
         super(driver);
     }
 
+    /**
+     * True if profile button is displayed (only true if the user is logged)
+     * @return
+     */
     public boolean isProfileButtonVisible(){
         clickDropdownMenuButton();
         return profileButton.isDisplayed();
+    }
+
+    /**
+     * True if logout button is displayed
+     * @return
+     */
+    public boolean isLoginButtonDisplayed(){
+        clickDropdownMenuButton();
+        return logoutButton.isDisplayed();
     }
 
     /**

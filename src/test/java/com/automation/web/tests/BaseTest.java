@@ -4,10 +4,7 @@ import com.automation.web.data.User;
 import driver.Driver;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.SignupPage;
+import pages.*;
 
 import java.util.Random;
 
@@ -34,7 +31,7 @@ public class BaseTest {
     }
 
     /**
-     * Create an account before each class
+     * Create an account before each class and logout
      */
     @BeforeClass
     public void beforeClass() {
@@ -59,8 +56,17 @@ public class BaseTest {
      */
     @AfterClass
     public void afterClass(){
+        LoginPage loginPage = homePage.clickLoginButton();
+        loginPage.setEmail(email);
+        loginPage.setPassword(password);
+        MainPage mainpage = loginPage.clickLoginButton();
 
+        ProfilePage profilePage = mainpage.clickProfileButton();
+        profilePage.clickToDeleteAccountLink();
+        profilePage.clickConfirmDeleteAccount();
     }
+
+
 
     private String generateRandomString(){
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
