@@ -54,6 +54,14 @@ public class BaseTest {
         mainPage.clickLogoutButton();
     }
 
+    /**
+     * Delete the account created
+     */
+    @AfterClass
+    public void afterClass(){
+
+    }
+
     private String generateRandomString(){
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         StringBuilder sb = new StringBuilder();

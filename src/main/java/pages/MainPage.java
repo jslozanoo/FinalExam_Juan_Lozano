@@ -38,6 +38,11 @@ public class MainPage extends BasePage {
         super(driver);
     }
 
+    public boolean isProfileButtonVisible(){
+        clickDropdownMenuButton();
+        return profileButton.isDisplayed();
+    }
+
     /**
      * Click main menu to display login container
      */
