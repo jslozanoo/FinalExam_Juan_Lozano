@@ -58,7 +58,7 @@ public class SignupPage extends BasePage {
         waitElementToBeClickable(signupButton);
         signupButton.click();
         getWait().until(ExpectedConditions.invisibilityOfElementLocated(By.id("disneyid-iframe")));
-        // getDriver().switchTo().defaultContent();
+
         return new MainPage(getDriver());
     }
 }

@@ -52,14 +52,6 @@ public class HomePage extends BasePage{
     }
 
     /**
-     * True if the user is logged, false if not
-     * @return
-     */
-    public boolean isLogged(){
-        return !(getMainContainerTitle().equals("Welcome"));
-    }
-
-    /**
      * Switch to iframe for login
      * @param loginFrame
      */
