@@ -24,6 +24,9 @@ public class ProfilePage extends BasePage{
     @FindBy(css = "div.block p")
     private WebElement confirmDeleteAccountParagraph;
 
+    @FindBy(css = ".block p a")
+    private WebElement paragraphLink; // Only element that is not repeated in both interfaces
+
     public ProfilePage(WebDriver driver){
         super(driver);
     }
@@ -46,6 +49,11 @@ public class ProfilePage extends BasePage{
         return changePasswordTitle.getText();
     }
 
+    public String getTextInLinkConfirmDeleteAccount(){
+        waitElementVisibility(paragraphLink);
+        return paragraphLink.getText();
+    }
+
     /**
      * Click delete account link
      */
@@ -53,13 +61,11 @@ public class ProfilePage extends BasePage{
         try{
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
             js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-            waitElementToBeClickable(deleteAccountLink);
             deleteAccountLink.click();
         }catch (Exception e){ // To manage staleElementReferenceException
             WebElement deleteAccountLink = getDriver().findElement(By.id("cancel-account"));
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
             js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-            waitElementToBeClickable(deleteAccountLink);
             deleteAccountLink.click();
         }
     }

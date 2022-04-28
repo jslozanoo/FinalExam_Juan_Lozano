@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 import pages.*;
 
+import java.lang.reflect.Method;
 import java.util.Random;
 
 public class BaseTest {
@@ -25,6 +26,9 @@ public class BaseTest {
         homePage = new HomePage(driver.getDriver());
     }
 
+    /**
+     * Close the driver
+     */
     @AfterTest
     public void afterTest(){
         driver.getDriver().quit();
@@ -50,15 +54,22 @@ public class BaseTest {
     }
 
     /**
-     * After each test method go to home page
-     * @param url
+     * Login in logout test and delete account
      */
-    @Parameters({"url"})
-    @AfterMethod
-    public void afterMethod(String url){
-        driver.getDriver().get(url);
+    @BeforeMethod
+    public void login(Method method){
+        if (!method.getName().equals("testLogin")){
+            LoginPage loginPage = homePage.clickLoginButton();
+            loginPage.setEmail(email);
+            loginPage.setPassword(password);
+            loginPage.clickLoginButton();
+        }
     }
 
+    /**
+     * Generate random string of length 6 to password and email
+     * @return
+     */
     private String generateRandomString(){
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         StringBuilder sb = new StringBuilder();
@@ -75,6 +86,10 @@ public class BaseTest {
         return sb.toString();
     }
 
+    /**
+     * With the aid of generate random string, add @gmail.com for eamil
+     * @return
+     */
     private String generateRandomEmail(){
         email = generateRandomString();
         return email + "@gmail.com";

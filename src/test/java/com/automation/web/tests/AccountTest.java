@@ -24,32 +24,26 @@ public class AccountTest extends BaseTest{
 
     @Test
     public void testLogout(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.setEmail(email);
-        loginPage.setPassword(password);
-        MainPage mainPage = loginPage.clickLoginButton();
+        MainPage mainPage = new MainPage(driver.getDriver());
         Assert.assertTrue(mainPage.isLogoutButtonDisplayed());
         HomePage homePageReturned = mainPage.clickLogoutButton();
         Assert.assertEquals(homePageReturned.getMainContainerTitle(), "Welcome!",
                 "You are not in home page");
     }
     @Test
-    public void testDeleteAccount() throws InterruptedException {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.setEmail(email);
-        loginPage.setPassword(password);
-        MainPage mainPage = loginPage.clickLoginButton();
-
+    public void testDeleteAccount(){
+        MainPage mainPage = new MainPage(driver.getDriver());
         Assert.assertTrue(mainPage.isProfileButtonVisible());
-
         ProfilePage profilePage = mainPage.clickProfileButton();
-
         Assert.assertEquals(profilePage.getPageMainTitle(), "Update Your Account",
                 "You are not in the profile page");
         Assert.assertEquals(profilePage.getChangePasswordTitle(), "Change Password",
                 "You are not in the profile page");
-
         profilePage.clickToDeleteAccountLink();
+        Assert.assertEquals(profilePage.getTextInLinkConfirmDeleteAccount(),
+                "Disney Guest Services", "You are not in the confirm delete account page");
+        Assert.assertEquals(profilePage.getPageMainTitle(), "Are you sure?",
+                "You are not in the confirm delete account page");
         profilePage.clickConfirmDeleteAccount();
     }
 }

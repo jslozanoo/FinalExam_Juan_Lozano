@@ -11,8 +11,10 @@
         <classes>
             <class name="com.automation.web.tests.AccountTest">
                 <methods>
-                    <include name="testLogin"></include>
+                    <!--<include name="testLogin"></include>
                     <include name="testLogout"></include>
+                    -->
+
                     <include name="testDeleteAccount"></include>
                 </methods>
             </class>
