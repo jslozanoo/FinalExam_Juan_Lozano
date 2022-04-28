@@ -1,11 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProfilePage extends BasePage{
 
@@ -35,7 +31,7 @@ public class ProfilePage extends BasePage{
      * Get Main title (not the page title) of the interface displayed
      * @return
      */
-    public String getPageMainTitle(){
+    public String getMainTitlePage(){
         waitElementVisibility(interfaceTitle);
         return interfaceTitle.getText();
     }
@@ -49,6 +45,10 @@ public class ProfilePage extends BasePage{
         return changePasswordTitle.getText();
     }
 
+    /**
+     * Get text in link in the paragraph in delete account confirm interface
+     * @return
+     */
     public String getTextInLinkConfirmDeleteAccount(){
         waitElementVisibility(paragraphLink);
         return paragraphLink.getText();

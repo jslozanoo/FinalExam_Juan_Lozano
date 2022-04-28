@@ -35,14 +35,14 @@ public class AccountTest extends BaseTest{
         MainPage mainPage = new MainPage(driver.getDriver());
         Assert.assertTrue(mainPage.isProfileButtonVisible());
         ProfilePage profilePage = mainPage.clickProfileButton();
-        Assert.assertEquals(profilePage.getPageMainTitle(), "Update Your Account",
+        Assert.assertEquals(profilePage.getMainTitlePage(), "Update Your Account",
                 "You are not in the profile page");
         Assert.assertEquals(profilePage.getChangePasswordTitle(), "Change Password",
                 "You are not in the profile page");
         profilePage.clickToDeleteAccountLink();
         Assert.assertEquals(profilePage.getTextInLinkConfirmDeleteAccount(),
                 "Disney Guest Services", "You are not in the confirm delete account page");
-        Assert.assertEquals(profilePage.getPageMainTitle(), "Are you sure?",
+        Assert.assertEquals(profilePage.getMainTitlePage(), "Are you sure?",
                 "You are not in the confirm delete account page");
         profilePage.clickConfirmDeleteAccount();
     }
