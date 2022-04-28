@@ -1,7 +1,7 @@
 package com.automation.web.tests;
 
 import com.automation.web.data.User;
-import driver.Driver;
+import com.automation.web.driver.Driver;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 import pages.*;
